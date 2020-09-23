@@ -7,6 +7,14 @@
     Sara has label 0
     Chris has label 1
 """
+import sys
+from class_vis import prettyPicture
+from prep_terrain_data import makeTerrainData
+
+import matplotlib.pyplot as plt
+import copy
+import numpy as np
+import pylab as pl
     
 import sys
 from time import time
@@ -19,8 +27,17 @@ from email_preprocess import preprocess
 ### labels_train and labels_test are the corresponding item labels
 features_train, features_test, labels_train, labels_test = preprocess()
 
+from sklearn import svm
 
+clf = svm.SVM(kernal='linear')
+clf.fit(features_train, labels_train)
+pred = clf.predict(features_test)
 
+from sklearn.metrics import accuracy_score
+acc = accuracy_score(pred, labels_test)
+
+def submitAccuracy()
+    return acc  
 
 #########################################################
 ### your code goes here ###
